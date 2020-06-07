@@ -5,10 +5,8 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <header className="header">
-            <div className="UserZone">
-                <NavLink to='/login' exact>Inicia Sesión</NavLink>
-                <NavLink to='/register' exact>Crea tu cuenta</NavLink>
-            </div>
+            <NavLink to='/login' exact>Inicia Sesión</NavLink>
+            <NavLink to='/register' exact>Crea tu cuenta</NavLink>
         </header>
     )
 }
