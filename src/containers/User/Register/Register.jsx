@@ -1,67 +1,73 @@
 import React from 'react';
+import { Form, Input, Button, Checkbox, notification } from 'antd';
 import './Register.scss';
-import { Form, Input, Button, Checkbox } from 'antd';
-
-const layout = {
-    labelCol: {
-        span: 8,
-    },
-    wrapperCol: {
-        span: 16,
-    },
-};
-const tailLayout = {
-    wrapperCol: {
-        offset: 8,
-        span: 16,
-    },
-};
+import { register } from '../../../redux/actions/users';
+import { useHistory } from 'react-router-dom';
 
 const Register = () => {
+    const history = useHistory();
+    const onFinish = user => {
+        register(user).then(() => {
+            notification.success({ message: 'Usuario registrado', description: 'Usuario registrado con exito' })
+            history.push('/login')
+        })
+            .catch(error => {
+                console.error(error)
+                notification.error({ message: 'Error en registro', description: 'Error al tratar de registrar ala usuario' })
+            })
+    }
     return (
         <div className="formContainer">
             <Form
-                {...layout}
                 name="basic"
-                initialValues={{
-                    remember: true,
-                }}
-                // onFinish={onFinish}
-                // onFinishFailed={onFinishFailed}
+                initialValues={{ remember: true, }}
+                onFinish={onFinish}
+                onFinishFailed={console.error}
             >
                 <Form.Item
-                    label="Username"
-                    name="username"
+                    label="Nombre"
+                    name="name"
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your username!',
+                            message: '¡Por favor, el nombre es requerido!',
                         },
                     ]}
                 >
                     <Input />
                 </Form.Item>
-
                 <Form.Item
-                    label="Password"
+                    label="Email"
+                    name="email"
+                    rules={[
+                        {
+                            required: true,
+                            message: '¡Por favor, el email es requerido!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    label="Contraseña"
                     name="password"
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your password!',
+                            message: '¡La contraseña es requerida!',
                         },
                     ]}
                 >
                     <Input.Password />
                 </Form.Item>
 
-                <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-                    <Checkbox>Remember me</Checkbox>
+                <Form.Item name="remember" valuePropName="checked">
+                    <Checkbox>Recordarme</Checkbox>
                 </Form.Item>
 
-                <Form.Item {...tailLayout}>
+                <Form.Item >
                     <Button type="primary" htmlType="submit">
-                        Submit
+                        Registrar
                     </Button>
                 </Form.Item>
             </Form>
