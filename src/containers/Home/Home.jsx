@@ -10,7 +10,7 @@ const Home = (props) => {
     }, [])
     return (
         <div className="snnipets">
-            <p>Aqui se mostrarán todos los snnipets!</p>
+            <p>Aquí se mostrarán todos los snnipets!</p>
         </div>
     )
 }
