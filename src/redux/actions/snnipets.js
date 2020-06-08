@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
     API_URL
 } from '../../api-config';
+import store from '../store';
 
 
 export const getAllSnnipets = async () => {
