@@ -8,6 +8,7 @@ const Header = (props) => {
         <header className="header">
             <NavLink to='/login' exact>Inicia Sesión</NavLink>
             <NavLink to='/register' exact>Crea tu cuenta</NavLink>
+            <NavLink to='/home' exact>Inicio</NavLink>
         </header>
     )
 }
