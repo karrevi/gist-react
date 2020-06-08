@@ -1,6 +1,7 @@
 const snnipetsReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'GET_ALL_SNNIPETS':
+        case 'GET_ALL':
+            console.log('GET_ALL')
             return {
                 ...state,
                 snnipets: action.payload

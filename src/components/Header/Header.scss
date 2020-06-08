@@ -1,12 +1,15 @@
 .header {
     display: flex;
-    // justify-content: space-between;
-    // align-items: flex-end;
+    justify-content: space-between;
+    align-items: flex-end;
     padding: 1rem;
+    width: 100%;
+    background-color: #3b6978;
 
     a {
         all: unset;
         padding: 0.5em;
         cursor: pointer;
+        color: #f4f6ff;
     }
 }

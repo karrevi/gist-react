@@ -5,10 +5,10 @@ import {
 import store from '../store';
 
 
-export const getAllSnnipets = async () => {
+export const getAll = async () => {
     const res = await axios.get(API_URL + '/snnipets')
     store.dispatch({
-        type: 'GET_ALL_SNNIPETS',
+        type: 'GET_ALL',
         payload: res.data
     });
     return res;
