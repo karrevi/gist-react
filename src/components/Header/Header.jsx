@@ -10,10 +10,8 @@ const Header = (props) => {
             {props.user ?
                 <div className="privateZone">
                     <NavLink to='/home' exact>Inicio</NavLink>
-                    <div className="">
-                        <NavLink to='/profile' exact>{props.user.name}</NavLink>
-                        <NavLink to={logout} exact>Cerrar Sesión</NavLink>
-                    </div>
+                    <NavLink to='/profile' exact>{props.user.name}</NavLink>
+                    <NavLink to={logout} exact>Cerrar Sesión</NavLink>
                 </div>
                 :
                 <div className="publicZone">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -7,8 +7,16 @@ import Register from './containers/User/Register/Register';
 import Login from './containers/User/Login/Login.jsx';
 import Home from './containers/Home/Home';
 import Profile from './containers/User/Profile/Profile';
+import { getUserInfo } from './redux/actions/users';
 
 function App() {
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      getUserInfo()
+      .catch(console.error)
+    }
+  }, [])
   return (
     <BrowserRouter>
     <Header />
