@@ -10,6 +10,7 @@ const Header = (props) => {
             {props.user ?
                 <div className="privateZone">
                     <NavLink to='/home' exact>Inicio</NavLink>
+                    <NavLink to='/newsnnipets' exact>Nuevo Snnipets</NavLink>
                     <NavLink to='/profile' exact>{props.user.name}</NavLink>
                     <a onClick={logout} exact>Cerrar Sesión</a>
                 </div>
