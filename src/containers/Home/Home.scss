@@ -46,9 +46,10 @@
 
 }
 
-.gist-snnipets {
+.gist-snnipets .file-box {
     position: relative;
     margin-bottom: 2em;
+
 }
 
 .d-inline-block {
@@ -84,4 +85,53 @@ ul {
 
 .muted-link {
     color: #586069;
+}
+
+.float-lef {
+    float: left;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.mt-1 {
+    margin-top: 4px;
+}
+
+.v-align-top {
+    vertical-align: top;
+}
+
+.text-gray {
+    font-size: 11px;
+    color: #586069;
+}
+
+.file {
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.Box-body:last-of-type {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.blob-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.Box-body {
+    padding: 16px;
+    border-bottom: 1px solid #e1e4e8;
 }
