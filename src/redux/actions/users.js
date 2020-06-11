@@ -28,7 +28,6 @@ export const getUserInfo = async (user) => {
     })
 }
 export const logout = async () => {
-    // const history = useHistory();
     const res = await axios.get(API_URL + '/users/logout', {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('authToken')
@@ -37,9 +36,7 @@ export const logout = async () => {
     localStorage.removeItem('authToken');
     store.dispatch({
         type: 'LOGOUT',
-        payload: ''
     })
-    // history.push('/')
     return res;
 }
 export const update = async (user) => {
