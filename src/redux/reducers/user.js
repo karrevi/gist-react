@@ -6,8 +6,13 @@ const useReducer = (state = {}, action) => {
                 ...state,
                 user: action.payload
             }
-            default:
-                return state;
+            case 'LOGOUT':
+                return {
+                    ...state,
+                    user: undefined
+                }
+                default:
+                    return state;
     }
 }
 export default useReducer;
