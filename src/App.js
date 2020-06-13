@@ -6,7 +6,7 @@ import Header from './components/Header/Header.jsx';
 import Register from './containers/User/Register/Register';
 import Login from './containers/User/Login/Login.jsx';
 import Home from './containers/Home/Home';
-import Profile from './containers/User/Profile/Profile';
+import Profile from './containers/User/Profile/Profile.jsx';
 import NewSnnipets from './containers/NewSnnipets/NewSnnipets';
 import { getUserInfo } from './redux/actions/users';
 
