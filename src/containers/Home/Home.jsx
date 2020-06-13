@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAll } from '../../redux/actions/snnipets';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
+import { IMG_URL } from '../../api-config';
 import './Home.scss';
 import { Avatar, Tabs } from 'antd';
 import { BranchesOutlined, StarFilled, CodeFilled, CommentOutlined } from '@ant-design/icons'
@@ -56,7 +57,7 @@ const Home = (props) => {
                                             </ul>
                                             <div className="float-left">
                                                 <div className="d-inline-block v-align-top mt-1">
-                                                    <a className="d-inline-block"><Avatar src={props?.snnipet[0]?.user.image_path} />
+                                                    <a className="d-inline-block"><Avatar img alt="Image_default" src={IMG_URL + '/users/' + props.user?.image_path} />
                                                     </a>
                                                 </div>
                                                 <div className="d-inline-block">
