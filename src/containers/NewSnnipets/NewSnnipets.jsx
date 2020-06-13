@@ -1,59 +1,78 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { insert } from '../../redux/actions/snnipets';
 import './NewSnnipets.scss';
-import { Input, Select, Button } from 'antd';
+import { Input, Select, Button, notification, Form } from 'antd';
+import { useState } from 'react';
 
-const { TextArea } = Input;
-const { Option } = Select;
 
-const NewSnnipets = () => {
+const NewSnnipets = (props) => {
+    const history = useHistory();
+    const { TextArea } = Input;
+    const { Option } = Select;
+    const [gistName, setGistName] = useState("");
+    const [codeGist, setCodeGist] = useState("");
+    const [nameExtension, setNameExtension] = useState("");
+
+    const nameGist = e => {
+        setGistName(e.target.value)
+    }
+    const codeNew = e => {
+        setCodeGist(e.target.value)
+    }
+    const extensionNew = e => {
+        setNameExtension(e.target.value)
+    }
+    const handleSubmit = e => {
+        insert(gistName,
+            nameExtension,
+            codeGist)
+            .then(res => {
+                notification.success({ message: 'Snnipet creado' })
+                setTimeout(() => {
+                    history.push('/home')
+                }, 2000);
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }
 
     return (
         <span>
-            <div className="gist-welcome gist-banner text-center">
+            <div>
                 <div className="container-lg px-3">
                     <h1>Comparte instantáneamente código, notas y fragmentos.</h1>
                 </div>
             </div>
             <div className="container-lg px-3 new-discussion-timeline">
                 <div className="repository-content gist-content">
-                    <form className="js-blod-form" id="new_gist" arial-label="create gist">
+                    <Form className="js-blod-form" id="new_gist" onFinish={handleSubmit}>
                         <div id="gists" className="js-gist-files">
-                            <Input type="text" className="form-control input-block input-contrast" name="gist[description]" value aria-label="Gist description" placeholder="Basic usage" autoComplete="off" />
+                            <Input type="text" className="form-control input-block input-contrast" onChange={nameGist} name="gist[description]" value={gistName} aria-label="Gist description" placeholder="Basic usage" autoComplete="off" />
                         </div>
                         <div className="js-gist-file">
                             <div className="file js-code-editor container-preview show-code mx-lg-3">
                                 <div className="file-header mb-2">
                                     <div className="input-group gist-filename-input">
-                                        <Input type="text" className="form-control filename js-gist-filename js-blod-filename" placeholder="Filename including extension..." />
-                                    </div>
-                                    <div className="file-actions d-none d-md--flex">
-                                        <Select style={{ width: 75 }}>
-                                            <Option key="wrap">Wrap</Option>
-                                            <Option key="tab">Tabs</Option>
-                                        </Select>
-                                        <Select style={{ width: 75 }}>
-                                            <Option key="2">2</Option>
-                                            <Option key="4">4</Option>
-                                        </Select>
-                                        <Select style={{ width: 75 }}>
-                                            <Option key="off">No wrap</Option>
-                                            <Option key="on">Soft wrap</Option>
-                                        </Select>
+                                        <Input type="text" className="form-control filename js-gist-filename js-blod-filename" value={nameExtension} onChange={extensionNew} placeholder="Filename including extension..." />
                                     </div>
                                 </div>
                                 <div className="commit-create position-relative">
-                                    <TextArea rows={6} />
+                                    <TextArea rows={6} value={codeGist} onChange={codeNew} />
                                 </div>
                             </div>
                         </div>
                         <div className="form-actions">
-                            <Button type="primary" className="btn">Crear gist</Button>
+                            <Button type="primary" className="btn" htmlType="submit">Crear gist</Button>
                         </div>
-                    </form>
+                    </Form>
                 </div>
             </div>
         </span>
     )
 }
 
-export default NewSnnipets;
+const mapStateToProps = ({ user }) => ({ theUser: user.theUser });
+export default connect(mapStateToProps)(NewSnnipets);

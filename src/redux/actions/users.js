@@ -3,7 +3,6 @@ import {
     API_URL
 } from '../../api-config';
 import store from '../store';
-// import { useHistory } from 'react-router-dom';
 
 export const register = async (user) => {
     await axios.post(API_URL + '/users/register', user);
@@ -40,7 +39,7 @@ export const logout = async () => {
     return res;
 }
 export const update = async (user) => {
-    const res = await axios.post(API_URL + '/users', user, {
+    const res = await axios.put(API_URL + '/users/update', user, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('authToken')
         }
@@ -50,8 +49,8 @@ export const update = async (user) => {
         payload: res.data
     });
 }
-export const uploadImage = async (user) => {
-    const res = await axios.put(API_URL + '/users', user, {
+export const uploadImage = async (id) => {
+    const res = await axios.put(API_URL + `/users/image/${id}`, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('authToken')
         }

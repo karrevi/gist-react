@@ -18,15 +18,16 @@ export const getAll = async () => {
     });
     return res;
 }
-export const insert = async () => {
+export const insert = async (name, extension, code_snnipets) => {
     const res = await axios.post(API_URL + '/snnipets', {
+        name,
+        extension,
+        code_snnipets
+    }, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('authToken')
         }
     });
-    store.dispatch({
-        type: 'INSERT_SNNIPETS',
-        payload: res.data
-    });
+    console.log(res.data)
     return res;
 }

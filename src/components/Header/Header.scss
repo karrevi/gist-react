@@ -1,9 +1,6 @@
-.header {
+.header_private_zone {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 1rem;
-    width: 100%;
+    padding: 16px;
     background-color: #3b6978;
 
     a {
@@ -12,4 +9,12 @@
         cursor: pointer;
         color: #f4f6ff;
     }
+}
+
+.privateZone {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
 }
