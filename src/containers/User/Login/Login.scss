@@ -1,27 +1,30 @@
-.site-layout-content {
-    // background: #fff;
-    padding: 24px;
-    min-height: 280px;
-}
-
-#components-layout-demo-top .logo {
-    width: 120px;
-    height: 31px;
-    background: rgba(255, 255, 255, 0.2);
-    margin: 16px 24px 16px 0;
-    float: left;
-}
-
 .ant-form {
-    margin: 70px;
-    padding: 100px;
-    background-color: #cae8d5;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 10vh;
+    padding: 20px;
 
-    .ant-layout-content {
-        background-color: white;
+    .login_input {
+        width: 30% !important;
     }
+}
 
-    .ant-layout {
-        background-color: white;
+.container_gists_banner {
+    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 30%, #fff), linear-gradient(70deg, #e0f1ff 32%, #fffae3);
+    color: #234766;
+    padding: 40px 0;
+
+    h1 {
+        margin: 0 0 10px;
+        font-size: 32px;
+        font-weight: 300;
+        text-align: center;
     }
+}
+
+.ant-form-horizontal .ant-form-item-label {
+    width: 100px !important;
+    text-align: left !important;
 }

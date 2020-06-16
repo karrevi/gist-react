@@ -1,30 +1,17 @@
-.gist-banner {
-    margin-top: 0;
+.container_gists_banner {
+    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 30%, #fff), linear-gradient(70deg, #e0f1ff 32%, #fffae3);
     color: #234766;
-    border-bottom-color: #fff;
-}
-
-.gist-welcome {
     padding: 40px 0;
+
+    h1 {
+        margin: 0 0 10px;
+        font-size: 32px;
+        font-weight: 300;
+        text-align: center;
+    }
 }
 
-.gist-welcome h1 {
-    margin: 0 0 10px;
-    font-size: 32px;
-    font-weight: 300;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.container-lg {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 1012px;
-}
-
-.px-3 {
+.container_gists_title {
     padding-left: 16px;
     padding-right: 16px;
 }
@@ -77,20 +64,6 @@
     border-top-right-radius: 3px;
 }
 
-.mb-2 {
-    margin-bottom: 8px;
-}
-
-.gist-filename-input {
-    float: left;
-    width: 250px;
-    margin-right: 10px;
-}
-
-.input-group {
-    display: table;
-}
-
 .input-group .form-control {
     display: table-cell;
     position: relative;
@@ -99,10 +72,6 @@
 
 .container-preview.show-code .commit-create {
     display: block;
-}
-
-.position-relative {
-    position: relative;
 }
 
 .file-actions {
@@ -154,4 +123,23 @@ optgroup {
 
 .form-actions .btn {
     float: right;
+}
+
+.ant-form {
+    .snippet_container {
+        width: 60% !important;
+
+        .snippet_input {
+            width: 100% !important;
+        }
+    }
+
+    .snippet_file {
+        width: 60% !important;
+        
+        .snippet_input {
+            width: 100% !important;
+        }
+    }
+
 }
