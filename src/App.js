@@ -26,7 +26,7 @@ function App() {
       <Route path='/login' component={Login} exact/>
       <Route path='/home' component={Home} exact/>
       <Route path='/profile' component={Profile} exact />
-      <Route path='/newsnnipets' component={NewSnnipets}/>
+      <Route path='/newsnnipets' component={NewSnnipets} exact/>
     </Switch>
     </BrowserRouter>
   );
