@@ -55,4 +55,8 @@ export const uploadImage = async (id) => {
             Authorization: 'Bearer ' + localStorage.getItem('authToken')
         }
     });
+    store.dispatch({
+        type: 'SET_USER',
+        payload: res.data
+    });
 }
