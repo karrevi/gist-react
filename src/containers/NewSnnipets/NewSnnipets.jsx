@@ -1,16 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { insert } from '../../redux/actions/snnipets';
 import './NewSnnipets.scss';
-import { Input, Select, Button, notification, Form } from 'antd';
-import { useState } from 'react';
+import { Input, Button, notification, Form } from 'antd';
 
-
-const NewSnnipets = (props) => {
+const NewSnnipets = () => {
     const history = useHistory();
     const { TextArea } = Input;
-    const { Option } = Select;
     const [gistName, setGistName] = useState("");
     const [codeGist, setCodeGist] = useState("");
     const [nameExtension, setNameExtension] = useState("");
@@ -41,35 +38,31 @@ const NewSnnipets = (props) => {
 
     return (
         <span>
-            <div>
-                <div className="container-lg px-3">
+            <div className="container_gists_banner">
+                <div className="container_gists_title">
                     <h1>Comparte instantáneamente código, notas y fragmentos.</h1>
                 </div>
             </div>
-            <div className="container-lg px-3 new-discussion-timeline">
-                <div className="repository-content gist-content">
-                    <Form className="js-blod-form" id="new_gist" onFinish={handleSubmit}>
-                        <div id="gists" className="js-gist-files">
-                            <Input type="text" className="form-control input-block input-contrast" onChange={nameGist} name="gist[description]" value={gistName} aria-label="Gist description" placeholder="Basic usage" autoComplete="off" />
-                        </div>
-                        <div className="js-gist-file">
-                            <div className="file js-code-editor container-preview show-code mx-lg-3">
-                                <div className="file-header mb-2">
-                                    <div className="input-group gist-filename-input">
-                                        <Input type="text" className="form-control filename js-gist-filename js-blod-filename" value={nameExtension} onChange={extensionNew} placeholder="Filename including extension..." />
-                                    </div>
-                                </div>
-                                <div className="commit-create position-relative">
-                                    <TextArea rows={6} value={codeGist} onChange={codeNew} />
-                                </div>
+            <Form className="js-blod-form" id="new_gist" onFinish={handleSubmit}>
+                <div id="gists" className="js-gist-files snippet_container">
+                    <Input type="text" className="form-control input-block input-contrast snippet_input" onChange={nameGist} name="gist[description]" value={gistName} aria-label="Gist description" placeholder="Título de tu gists" autoComplete="off" />
+                </div>
+                <div className="js-gist-file snippet_file">
+                    <div className="file js-code-editor container-preview show-code mx-lg-3">
+                        <div className="file-header mb-2">
+                            <div className="input-group gist-filename-input">
+                                <Input type="text" className="form-control filename js-gist-filename js-blod-filename snippet_input" value={nameExtension} onChange={extensionNew} placeholder="Fichero y extension del gist" />
                             </div>
                         </div>
-                        <div className="form-actions">
-                            <Button type="primary" className="btn" htmlType="submit">Crear gist</Button>
+                        <div className="commit-create position-relative">
+                            <TextArea className="snippet_input" rows={6} value={codeGist} onChange={codeNew} placeholder="Pega tu código aquí..." />
                         </div>
-                    </Form>
+                    </div>
                 </div>
-            </div>
+                <div className="form-actions">
+                    <Button type="primary" className="btn" htmlType="submit">Crear gist</Button>
+                </div>
+            </Form>
         </span>
     )
 }
