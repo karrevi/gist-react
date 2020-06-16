@@ -1,32 +1,37 @@
 import React from 'react';
 import './Header.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { logout } from '../../redux/actions/users';
+import logo from '../../img/logo.jpg';
 
 const Header = (props) => {
+    const history = useHistory();
+
+    const home = () => {
+        history.push('/home');
+    }
+
     return (
-        <header>
-            <div className="header">
-                {props.user ?
-                    <div className="header_private_zone">
-                        <div className="hedear_private_zone_1">
-                            <NavLink to='/home' exact>Inicio</NavLink>
-                            <NavLink to='/newsnnipets' exact>Nuevo Snnipets</NavLink></div>
-                        <div className="hedear_private_zone_1">
-                            <NavLink to='/profile' exact>{props.user.name}</NavLink>
-                            <a onClick={logout} exact>Cerrar Sesión</a>
-                        </div>
-                    </div>
-                    :
-                    <div className="publicZone">
-                        <NavLink to='/login' exact>Inicia Sesión</NavLink>
-                        <NavLink to='/register' exact>Crea tu cuenta</NavLink>
-                    </div>
-                }
+        <div className="header">
+            <div className="header_logo">
+                <img src={logo} alt="Logo app" onClick={home} />
             </div>
-        </header>
+            {props.user ?
+                <div className="header_private_zone">
+                    <NavLink to='/newsnnipets' exact>Nuevo Snnipets</NavLink>
+                    <NavLink to='/profile' exact>{props.user.name}</NavLink>
+                    <NavLink to='/login' onClick={logout} exact>Cerrar Sesión</NavLink>
+                </div>
+                :
+                <div className="header_public_zone">
+                    <NavLink to='/login' exact>Inicia Sesión</NavLink>
+                    <NavLink to='/register' exact>Crea tu cuenta</NavLink>
+                </div>
+            }
+        </div>
     )
+
 }
 const mapStateToProps = ({ user }) => ({ user: user.user })
 export default connect(mapStateToProps)(Header);

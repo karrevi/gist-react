@@ -1,13 +1,36 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #24292E;
+    padding: 10px 10px;
+
+    a {
+        color: #fff;
+        padding: 0.5em;
+    }
+}
+
+.header_logo {
+    margin: 15px 15px;
+    cursor: pointer;
+
+    img {
+        width: 103px;
+        border-radius: 5px;
+    }
+}
+
 .header_private_zone {
     display: flex;
     padding: 16px;
-    background-color: #3b6978;
+    background-color: #24292E;
 
     a {
         all: unset;
         padding: 0.5em;
         cursor: pointer;
-        color: #f4f6ff;
+        color: #fff;
     }
 }
 
