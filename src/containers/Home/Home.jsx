@@ -16,82 +16,82 @@ const Home = (props) => {
             .catch(console.error)
     }, [])
 
-    const [state, setState] = useState({
+    const [state] = useState({
         size: 'small'
     })
 
-    const onChange = (e) => {
-        setState({ size: e.target.value });
-    }
-
     return (
-        <div className="snnipets">
-            <div className="snnipets_layout">
-                <div className="snnipets_lg">
-                    <h1 className="">Descubre todos los gists</h1>
+        <span>
+            <div className="container_gists_banner">
+                <div className="container_gists_title">
+                    <h1>¡Descubre todos los snnipets!</h1>
                 </div>
-                <nav className="reponav js-repo-nav">
-                    <Tabs defaultActiveKey="1" type="card" size={state}>
-                        <TabPane tab={<span><CodeFilled />
-                        Todos gists</span>} key="1">
-                            {
-                                props.snnipet?.map(snnipet =>
-                                    <div className="gist-snnipets" key={snnipet?._id}>
-                                        <div className="gits-snnipets-meta d-inline-bock width-full">
-                                            <ul className="float-right h6">
-                                                <li className="d-inline-block mr-3">
-                                                    <a className="muted-link" NavLink to=""> <CodeFilled />file</a>
-                                                </li>
-                                                <li className="d-inline-block mr-3">
-                                                    <a className="muted-link" NavLink to=""> <BranchesOutlined /> forks
+            </div>
+            <div className="snnipets">
+                <div className="snnipets_layout">
+                    <div className="snnipets_lg">
+                    </div>
+                    <nav className="reponav js-repo-nav">
+                        <Tabs defaultActiveKey="1" type="card" size={state}>
+                            <TabPane tab={<span><CodeFilled />
+                        Snnipets</span>} key="1">
+                                {
+                                    props.snnipet?.map(snnipet =>
+                                        <div className="gist-snnipets" key={snnipet?._id}>
+                                            <div className="gits-snnipets-meta d-inline-bock width-full">
+                                                <ul className="float-right h6">
+                                                    <li className="d-inline-block mr-3">
+                                                        <a className="muted-link" href="# "> <CodeFilled />file</a>
+                                                    </li>
+                                                    <li className="d-inline-block mr-3">
+                                                        <a className="muted-link" href="# "> <BranchesOutlined /> forks
                             </a>
-                                                </li>
-                                                <li className="d-inline-block mr-3">
-                                                    <a className="muted-link" NavLink to=""> <CommentOutlined /> comentarios
+                                                    </li>
+                                                    <li className="d-inline-block mr-3">
+                                                        <a className="muted-link" href="# "> <CommentOutlined /> comentarios
                             </a>
-                                                </li>
-                                                <li className="d-inline-block mr-3">
-                                                    <a className="muted-link" NavLink to=""> <StarFilled /> stars
+                                                    </li>
+                                                    <li className="d-inline-block mr-3">
+                                                        <a className="muted-link" href="# "> <StarFilled /> stars
                             </a>
-                                                </li>
-                                            </ul>
-                                            <div className="float-left">
-                                                <div className="d-inline-block v-align-top mt-1">
-                                                    <a className="d-inline-block"><Avatar img alt="Image_default" src={IMG_URL + '/users/' + props.user?.image_path} />
-                                                    </a>
-                                                </div>
-                                                <div className="d-inline-block">
-                                                    <span>
-                                                        <a data-hovercard-type="user">{props?.snnipet[0]?.user.name}</a> / <a>{snnipet.name}</a>
-                                                    </span>
-                                                    <div className="text-gray">
-                                                        Creado <Moment fromNow>2020-06-19T12:59-0500</Moment>
+                                                    </li>
+                                                </ul>
+                                                <div className="float-left">
+                                                    <div className="d-inline-block v-align-top mt-1">
+                                                        <a className="d-inline-block" href="/profile"><Avatar img alt="Image_default" src={IMG_URL + '/users/' + props?.user?.image_path} />
+                                                        </a>
+                                                    </div>
+                                                    <div className="d-inline-block">
+                                                        <div>{props?.snnipet[0]?.user.name} / {snnipet.name}
+                                                        </div>
+                                                        <div className="text-gray">
+                                                            Creado <Moment fromNow>2020-06-19T12:59-0500</Moment>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="js-gist-file-update-container js-task-list-container file-box">
-                                            <div id="file-paste" className="file">
-                                                <div itempro="text" className="Box-body p-0 blod-wrapper data type-text">{snnipet.code_snnipets}
+                                            <div className="js-gist-file-update-container js-task-list-container file-box">
+                                                <div id="file-paste" className="file">
+                                                    <div itempro="text" className="Box-body p-0 blod-wrapper data type-text">{snnipet.code_snnipets}
+                                                    </div>
                                                 </div>
+
                                             </div>
-
                                         </div>
-                                    </div>
-                                )
-                            }
-                        </TabPane>
-                        <TabPane tab={<span><BranchesOutlined />
+                                    )
+                                }
+                            </TabPane>
+                            <TabPane tab={<span><BranchesOutlined />
                          Forked</span>} key="2">
-                        </TabPane>
-                        <TabPane tab={<span><StarFilled />
+                            </TabPane>
+                            <TabPane tab={<span><StarFilled />
                          Forked</span>} key="3">
-                        </TabPane>
-                    </Tabs>
-                </nav >
-            </div>
-
-        </div >
+                            </TabPane>
+                        </Tabs>
+                    </nav >
+                </div>
+            </div >
+        </span>
     )
 }
 
