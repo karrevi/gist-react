@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, notification } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
 import './Register.scss';
 import { register } from '../../../redux/actions/users';
 import { useHistory } from 'react-router-dom';
@@ -17,7 +17,12 @@ const Register = () => {
             })
     }
     return (
-        <div className="formContainer">
+        <span>
+            <div className="container_gists_banner">
+                <div className="container_gists_title">
+                    <h1>Regístrate y empieza a compartir código...</h1>
+                </div>
+            </div>
             <Form
                 name="basic"
                 initialValues={{ remember: true, }}
@@ -26,11 +31,12 @@ const Register = () => {
             >
                 <Form.Item
                     label="Nombre"
+                    className="register_input"
                     name="name"
                     rules={[
                         {
                             required: true,
-                            message: '¡Por favor, el nombre es requerido!',
+                            message: 'El nombre es requerido',
                         },
                     ]}
                 >
@@ -38,11 +44,12 @@ const Register = () => {
                 </Form.Item>
                 <Form.Item
                     label="Email"
+                    className="register_input"
                     name="email"
                     rules={[
                         {
                             required: true,
-                            message: '¡Por favor, el email es requerido!',
+                            message: 'El email es requerido',
                         },
                     ]}
                 >
@@ -50,29 +57,25 @@ const Register = () => {
                 </Form.Item>
                 <Form.Item
                     label="Contraseña"
+                    className="register_input"
                     name="password"
                     rules={[
                         {
                             required: true,
-                            message: '¡La contraseña es requerida!',
+                            message: 'La contraseña es requerida',
                         },
                     ]}
                 >
                     <Input.Password />
                 </Form.Item>
-
-                <Form.Item name="remember" valuePropName="checked">
-                    <Checkbox>Recordarme</Checkbox>
-                </Form.Item>
-
                 <Form.Item >
                     <Button type="primary" htmlType="submit">
                         Registrar
                     </Button>
                 </Form.Item>
             </Form>
-        </div>
-    );
-};
+        </span>
+    )
+}
 
 export default Register;
