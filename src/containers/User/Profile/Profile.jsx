@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { IMG_URL } from '../../../api-config.js';
-import { update } from '../../../redux/actions/users';
+import { update, uploadImage } from '../../../redux/actions/users';
 import { Card, notification, Input, Form, Button } from 'antd';
 import './Profile.scss';
 
@@ -19,8 +19,16 @@ const Profile = (props) => {
                 notification.error({ message: 'Error al intentar actualizar los datos' })
             })
 
-    };
-
+    }
+    const fileUploadHandler = e => {
+        const fd = new FormData();
+        fd.append("images", e.target.files[0], e.target.files[0].name);
+        console.log(e.target.files[0])
+        uploadImage(fd)
+            .then((res) => { console.log('Imagen cambiada'); })
+            .catch(() => { console.log('Error al cambiar la imagen'); });
+    }
+    console.log(props.user)
     return (
         <span>
             <div className="container_gists_banner">
@@ -30,15 +38,12 @@ const Profile = (props) => {
             </div>
             <div className="user-layout">
                 <div className="user_layout_left">
-                    <Card
+                    <Card className="ant-card-body"
                         hoverable
                         style={{ width: 240 }}
-                        cover={<img alt="Image_default" src={IMG_URL + '/users/' + props.user?.image_path} />}
-                    ></Card>
-                    <div className="ant-card-body"><Button type="primary" htmlType="submit">
-                        Actualizar foto
-                </Button>
-                    </div>
+                        cover={<img alt="Image_default" src={IMG_URL + '/users/' + props.user?.image_path} />}>
+                        <Input type="file" id="single" onChange={fileUploadHandler} />
+                    </Card>
                 </div>
                 <div className="user_layout_right">
                     <Form
