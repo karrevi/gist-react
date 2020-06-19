@@ -49,14 +49,15 @@ export const update = async (user) => {
         payload: res.data
     });
 }
-export const uploadImage = async (id) => {
-    const res = await axios.put(API_URL + `/users/image/${id}`, {
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('authToken')
-        }
-    });
+export const uploadImage = async (images) => {
+    const res = await axios.post(API_URL + `/users/image/`,
+        images, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('authToken')
+            }
+        });
     store.dispatch({
         type: 'SET_USER',
-        payload: res.data
+        payload: res.data.user
     });
 }
